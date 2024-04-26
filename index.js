@@ -45,9 +45,8 @@ app.get ('/auth/google/failure', (req, res) => {
   res.send ('Something went wrong!');
 });
 
-app.get ('/auth/protected', isLoggedIn, (req, res) => {
-  let name = req.user.displayName;
-  res.send (`Hello ${name}`);
+app.get('/auth/protected', isLoggedIn, (req, res) => {
+  res.sendFile(path.join(__dirname, 'game.html')); // Send the game.html file
 });
 
 app.use ('/auth/logout', (req, res) => {
@@ -58,3 +57,5 @@ app.use ('/auth/logout', (req, res) => {
 app.listen (5000, () => {
   console.log ('Listening on port 5000');
 });
+
+// /sign-up
